@@ -185,6 +185,10 @@ export default createStore({
 
     ALTERAR_SITUACAO_BATALHA(state,payload){
       state.SituacaoBatalha = payload
+      
+      if (payload == false) {
+        state.PokemonDuelo = null
+      }
     },
 
     REMOVER_POKEMON(state,payload){

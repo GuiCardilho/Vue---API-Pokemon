@@ -160,7 +160,6 @@ import Message from '@/components/Message.vue';
   .backg{
     background-image: url('@/../public/img/background2.jpg');
     background-position: center;
-
     display: flex;
     width: 100%;
     height: 100%;

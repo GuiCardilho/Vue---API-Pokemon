@@ -1,6 +1,6 @@
 <template>
         <div v-if="$store.state.pokemonNaMao.length > 0" class="main-container">
-            <div class="textContainers dinheiro"><img src="@/../public/img/dinheiro.png" /> - R$ {{$store.state.dinheiro}}</div>
+            <div class="textContainers dinheiro"><img src="@/../public/img/dinheiro.png" /><h1> - R$ {{$store.state.dinheiro}}</h1></div>
             <div class="container-duelo">
                 <div class="container-left">
                     <img v-if="ImgAtual" :src="ImgAtual" />
@@ -13,8 +13,8 @@
                         <h1>Defesa: {{$store.state.pokemonNaMao[index].stats[2].base_stat+AumentarDefesa}}</h1>
                     </div>
                     <div class="btnBaixoAtaque">
-                        <button v-if="this.dataDuelo != '' " @click="AtaqueUsuario" class="btnConceito btn">Ataque</button>
-                        <button v-if="this.dataDuelo != '' " @click="DefesaUsuario" class="btnConceito btn">Defesa</button>
+                        <button v-if="this.dataDuelo != '' " @click="AtaqueUsuario" class="btnConceito btn btn-at">Ataque</button>
+                        <button v-if="this.dataDuelo != '' " @click="DefesaUsuario" class="btnConceito btn btn-atk">Defesa</button>
                         <button v-if="this.dataDuelo != '' && this.contadorEspecial >= 5" @click="AtaqueEspecialUsuario" class="btnConceito btn">Especial</button>
                     </div>
                 </div>
@@ -87,6 +87,7 @@ import api from '@/services/api';
             AtaqueEspecial: 1,
             DoubleDamageFrom: 1,
             DoubleDamageTo: 1,
+            fraquezas: null,
 
         };
     },
@@ -198,7 +199,11 @@ import api from '@/services/api';
         },
 
         CalcularVantagem(tipo){
-            
+            api.get(`/type/${this.urlPesquisa}`).then((response) => {
+                    this.fraquezas = response.data;
+                    console.log(this.urlPesquisa)
+                 }).catch(() => {})
+
             for (var i = 0; i < this.fraquezas.damage_relations.double_damage_from.length; i++) {
                  if (this.fraquezas.damage_relations.double_damage_from[i].name == tipo) {
                     this.DoubleDamageFrom = 2
@@ -238,6 +243,7 @@ import api from '@/services/api';
             this.dataDuelo = this.$store.state.PokemonDuelo
             this.imgPokemonDuelo =  this.$store.state.PokemonDuelo.sprites.other.dream_world.front_default
             this.imgPokemonDueloAlt = this.$store.state.PokemonDuelo.sprites.other["official-artwork"].front_default
+            this.urlPesquisa = this.$store.state.PokemonDuelo.types[0].type.name
         }
     },
     
@@ -248,21 +254,32 @@ import api from '@/services/api';
     .main-container{
         justify-content: center;
         align-content: center;
-        margin-top: 120px;
+        padding-top: 120px;
         display: flex;
         flex-direction: column;
-        height: 75vh;
+        height: 85vh;
+        background-image: url('@/../public/img/background5.png');
     }
 
     .dinheiro{
         display: flex;
         justify-content: center;
         align-items: center;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px #cccccc;	
+        font-size: 16pt;
+
     }
 
     .dinheiro img{
-        width: 20px;
-        height: 20px;
+        width: 45;
+        height: 31px;
+        
+    }
+
+    .dinheiro img, .dinheiro h1{
+        background-color: #fff;
+        border-radius: 7px;
     }
 
     .container-duelo{
@@ -292,7 +309,6 @@ import api from '@/services/api';
         display: flex;
         flex-direction: column;
         text-transform: uppercase;
-
         max-width: 450px;
         min-height: 450px;
     }
@@ -300,6 +316,10 @@ import api from '@/services/api';
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .btn-atk{
+        background-color: transparent;
     }
 
     .textContainers h1{
@@ -312,6 +332,7 @@ import api from '@/services/api';
         width: 30%;
         height: 40%;
     }
+
     .containerTextCentral h1{
         display: flex;
         align-items: center;
@@ -322,12 +343,13 @@ import api from '@/services/api';
         border-radius: 20px;
         margin: 20px;
         text-transform: uppercase;
-        min-height: 80px;	
+        min-height: 80px;
     }
 
     .aumentarBotao{
         padding: 50px;
         font-size: 30px;
+        background-color: #fff;
     }
 
     .container-mini-icons{
@@ -375,7 +397,6 @@ import api from '@/services/api';
         cursor: pointer;
         letter-spacing:2px;
         text-shadow: 1px 1px rgba(255, 255, 255, 0.774);
-        background-color: transparent;
         color: #c81511;
         border-radius: 10px;
         transition:0.5s;
@@ -410,6 +431,7 @@ import api from '@/services/api';
         transition: .5s ease;
     }
 
+    
     .btn::before{
         width: 0%;
         transform: translate(0%,-50%);
