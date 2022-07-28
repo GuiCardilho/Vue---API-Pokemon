@@ -46,8 +46,8 @@ A pagina possui seis áreas sendo elas com suas respectivas informações:
 -----> As paginas contam com um design responsivo facilitando o acesso em aparelhos remotos ou com telas menores <-----
 
 ```
-
-#### Instalando dependências
+***Utilize um terminal de comandos no arquivos da pagina para: ***
+#### Instalando dependências 
 ```
 npm install
 ```
