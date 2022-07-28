@@ -201,7 +201,6 @@ import api from '@/services/api';
         CalcularVantagem(tipo){
             api.get(`/type/${this.urlPesquisa}`).then((response) => {
                     this.fraquezas = response.data;
-                    console.log(this.urlPesquisa)
                  }).catch(() => {})
 
             for (var i = 0; i < this.fraquezas.damage_relations.double_damage_from.length; i++) {
