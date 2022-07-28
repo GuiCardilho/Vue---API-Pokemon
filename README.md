@@ -57,3 +57,7 @@ npm install
 ```
 npm run serve
 ```
+###### Link do site hospedado
+```
+https://guicardilho.github.io/EvolutionSoft-Test-Pages/
+```
