@@ -47,6 +47,7 @@ A pagina possui seis áreas sendo elas com suas respectivas informações:
 
 ```
 ***Utilize um terminal de comandos no arquivos da pagina para:***
+
 #### Instalando dependências 
 ```
 npm install
