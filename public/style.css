@@ -1,0 +1,21 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Anton', sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
+html{
+    scroll-behavior: smooth;
+
+}
