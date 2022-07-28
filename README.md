@@ -46,7 +46,7 @@ A pagina possui seis áreas sendo elas com suas respectivas informações:
 -----> As paginas contam com um design responsivo facilitando o acesso em aparelhos remotos ou com telas menores <-----
 
 ```
-***Utilize um terminal de comandos no arquivos da pagina para:***
+***Utilize um terminal de comandos no arquivo da página para:***
 
 #### Instalando dependências 
 ```
