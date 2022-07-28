@@ -43,7 +43,7 @@ A pagina possui seis áreas sendo elas com suas respectivas informações:
 6. Sobre
   -> Informações Gerais do site.
   
- ***As paginas contam com um design responsivo facilitando o acesso em aparelhos remotos ou com telas menores***
+-----> As paginas contam com um design responsivo facilitando o acesso em aparelhos remotos ou com telas menores <-----
 
 ```
 
